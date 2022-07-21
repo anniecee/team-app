@@ -1,0 +1,17 @@
+{% extends 'teamApp/base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+{% comment %} https://simpleisbetterthancomplex.com/2015/12/04/package-of-the-week-django-widget-tweaks.html {% endcomment %}
+
+<h1>Add a team member</h1>
+
+<form  method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input  type="submit"  value="Submit"/>
+</form>
+
+{% endblock %}

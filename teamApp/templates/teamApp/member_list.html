@@ -1,0 +1,36 @@
+{% extends 'teamApp/base.html' %}
+{% block content %}
+
+<p>
+    <a href="../add/">Add member</a>
+</p>
+
+<h1>Team members</h1>
+
+<p>You have {{ allmembers.count }} team members.</p>
+
+<ul>
+    <!-- Iterate over object_list -->
+    {% for member in allmembers %}
+
+    <!-- Display Objects -->     
+    <li><b>
+        {{ member.first_name }} {{ member.last_name }}
+        
+        <!-- Show if member is admin -->  
+        {% if member.role == 'admin' %}
+            (admin)
+        {% endif %}
+    </b></li>
+
+    <li>{{ member.phone }}</li>
+    <li>{{ member.email }}</li>
+    <li><a href="../{{ member.id }}/edit/">Edit</a></li>
+    <hr/>
+
+    <!-- If object_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
